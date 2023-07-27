@@ -332,6 +332,10 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
 
   retval = save_old_pass (pamh, user, options.remember, options.filename, options.debug);
 
+  if (options.debug) {
+    pam_syslog (pamh, LOG_DEBUG, "Reached at seconds place");
+  }
+
   if (retval == PAM_PWHISTORY_RUN_HELPER)
       retval = run_save_helper(pamh, user, options.remember, options.filename, options.debug);
 

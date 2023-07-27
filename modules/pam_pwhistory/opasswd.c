@@ -155,6 +155,10 @@ check_old_pass, const char *user, const char *newpass, const char *filename, int
   opwd entry;
   int found = 0;
 
+  if (debug) {
+    pam_syslog (pamh, LOG_DEBUG, "Reached here");
+  }
+
 #ifndef HELPER_COMPILE
   if (SELINUX_ENABLED)
     return PAM_PWHISTORY_RUN_HELPER;
